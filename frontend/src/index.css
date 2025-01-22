@@ -1,0 +1,133 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+.add-movie-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+.add-movie-button:hover {
+  background-color: #0056b3;
+}
+
+.movie-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.movie-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 200px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.movie-card:hover {
+  transform: scale(1.05); /* Efeito de zoom */
+}
+
+.movie-card img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.movie-card h3 {
+  margin: 10px;
+  font-size: 18px;
+}
+
+.movie-card p {
+  margin: 10px;
+  font-size: 14px;
+}
+
+.rating {
+  margin: 10px;
+}
+
+.rating span {
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s;
+}
+
+.rating span:hover {
+  transform: scale(1.2);
+}
+
+.movie-form {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 300px;
+}
+
+.movie-form input,
+.movie-form textarea {
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.movie-form textarea {
+  resize: none;
+}
+
+.movie-form button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.movie-form button:hover {
+  background-color: #218838;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display: none; /* Não exibe inicialmente */
+}
+
+.movie-card:hover .delete-button {
+  display: block; /* Exibe ao passar o mouse */
+}

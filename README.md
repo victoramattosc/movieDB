@@ -80,7 +80,7 @@ Este projeto é um sistema completo para gerenciamento de filmes, desenvolvido u
 4. **Iniciar o servidor**:
    Utilize **Daphne** para executar o servidor:
    ```bash
-   daphne -b 0.0.0.0 -p 8000 backend.asgi:application
+   daphne movie_site.asgi:application --port 8001
    ```
 
 5. **Usando Docker**:

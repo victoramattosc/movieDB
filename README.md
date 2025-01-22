@@ -24,6 +24,7 @@ Este projeto é um sistema completo para gerenciamento de filmes, desenvolvido u
 ### 🔹 Infraestrutura
 - **Docker**: Containerização para garantir consistência no ambiente de desenvolvimento e produção.
 - **Makefile**: Automação de comandos no backend.
+- **requirements.txt**: Lista de dependências Python necessárias para o backend.
 
 ---
 
@@ -48,6 +49,7 @@ Este projeto é um sistema completo para gerenciamento de filmes, desenvolvido u
 ## 🚀 Pré-requisitos
 
 - **Docker** instalado na máquina.
+- **Python** (caso não utilize Docker).
 - **Node.js** e **npm** instalados para executar o frontend.
 
 ---
@@ -62,20 +64,29 @@ Este projeto é um sistema completo para gerenciamento de filmes, desenvolvido u
    cd <pasta-do-projeto>/backend
    ```
 
-2. **Iniciar o backend com Docker**:
+2. **Instalar dependências**:
+   Caso não utilize Docker, instale as dependências do backend utilizando o arquivo `requirements.txt`:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configurar o banco de dados**:
+   Aplicar as migrações para configurar o banco de dados:
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+4. **Iniciar o servidor**:
+   Utilize **Daphne** para executar o servidor:
+   ```bash
+   daphne -b 0.0.0.0 -p 8000 backend.asgi:application
+   ```
+
+5. **Usando Docker**:
+   Inicie o backend utilizando Docker:
    ```bash
    docker-compose up --build
-   ```
-
-3. **Aplicar as migrações do banco de dados**:
-   ```bash
-   docker exec -it backend python manage.py makemigrations
-   docker exec -it backend python manage.py migrate
-   ```
-
-4. **Iniciar o servidor com Daphne**:
-   ```bash
-   docker exec -it backend daphne -b 0.0.0.0 -p 8001 backend.asgi:application
    ```
 
 ---

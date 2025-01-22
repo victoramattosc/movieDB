@@ -83,8 +83,12 @@ Este projeto é um sistema completo para gerenciamento de filmes, desenvolvido u
    daphne movie_site.asgi:application --port 8001
    ```
 
-5. **Usando Docker**:
-   Inicie o backend utilizando Docker:
+5. **Iniciando API**:
+   Inicie o backend utilizando Pyhton ou Docker:
+   ```bash
+   python manage.py runserver
+   ```
+   ou
    ```bash
    docker-compose up --build
    ```

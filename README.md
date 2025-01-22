@@ -52,7 +52,7 @@
 ### Instalação
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/movie-manager.git
+   git clone https://github.com/seu-usuario/movieDB.git
    ```
 2. Instale as dependências:
    ```bash

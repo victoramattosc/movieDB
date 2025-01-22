@@ -75,7 +75,7 @@ Este projeto é um sistema completo para gerenciamento de filmes, desenvolvido u
 
 4. **Iniciar o servidor com Daphne**:
    ```bash
-   docker exec -it backend daphne -b 0.0.0.0 -p 8000 backend.asgi:application
+   docker exec -it backend daphne -b 0.0.0.0 -p 8001 backend.asgi:application
    ```
 
 ---

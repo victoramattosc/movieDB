@@ -1,67 +1,108 @@
-# 🎥 Movie Database - Gestão de Filmes com React, RxDB e WebSocket
+# 🎥 Sistema de Gerenciamento de Filmes
 
-**Movie Manager** é uma aplicação web para gerenciamento de filmes, permitindo visualizar, adicionar, editar, avaliar e deletar filmes. O projeto utiliza tecnologias modernas para criar uma experiência reativa, escalável e sincronizada em tempo real.
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-### **Frontend**
-- **React**: Biblioteca para construção de interfaces de usuário reativas.
-- **React Context API**: Gerenciamento de estado global para compartilhamento de dados entre componentes.
-- **RxDB (Reactive Database)**: Banco de dados reativo para sincronização e armazenamento local.
-  - **Dexie.js**: Usado como driver de armazenamento via IndexedDB.
-  - **Query Builder Plugin**: Para realizar consultas avançadas no banco de dados.
-  - **Validate Ajv Plugin**: Validação de esquemas com JSON Schema.
-  - **Dev Mode Plugin**: Fornece ferramentas para depuração em ambiente de desenvolvimento.
-- **WebSocket**: Comunicação bidirecional em tempo real para sincronização de dados entre cliente e servidor.
-- **RxDB Hooks**: Hooks para integração do RxDB com React, otimizando as consultas e reatividade.
-
-### **Backend**
-- **API RESTful**: Criada para gerenciar filmes com operações CRUD (Create, Read, Update, Delete).
-- **WebSocket Server**: Responsável por enviar atualizações em tempo real para o frontend.
-
-### **Outras Dependências**
-- **React Scripts**: Ferramentas para configuração e execução da aplicação React.
-- **RxJS**: Biblioteca para programação reativa com observables.
+Este projeto é um sistema completo para gerenciamento de filmes, desenvolvido utilizando tecnologias modernas, com foco em sincronização em tempo real e experiência offline-first. A aplicação possui backend em Django e frontend em React com RxDB.
 
 ---
 
-## 📦 Funcionalidades
-- **Gerenciamento de Filmes**:
-  - Adicionar novos filmes com informações como nome, descrição, duração e imagem.
-  - Editar informações de filmes existentes.
-  - Avaliar filmes com um sistema de estrelas (1 a 5).
-  - Excluir filmes.
+## 🛠 Tecnologias Utilizadas
 
-- **Reatividade e Sincronização**:
-  - A aplicação utiliza o RxDB para manter os dados sincronizados em tempo real com o backend e o WebSocket para refletir mudanças em todos os clientes conectados.
+### 🔹 Frontend
+- **React.js**: Biblioteca para construção de interfaces de usuário.
+- **RxDB**: Banco de dados reativo local com suporte offline-first.
+  - **IndexedDB** via **Dexie.js**: Motor de armazenamento local.
+  - **RxDB Query Builder Plugin**: Consultas dinâmicas no banco de dados local.
+- **RxDB Hooks**: Integração para usar RxDB com React.
+- **WebSocket**: Sincronização em tempo real com o backend.
 
-- **Offline-First**:
-  - Com o RxDB, o app permite que os dados sejam acessados e manipulados mesmo sem conexão com a internet.
+### 🔹 Backend
+- **Django**: Framework web robusto.
+- **Django REST Framework (DRF)**: Criação de APIs RESTful.
+- **Django Channels**: Comunicação em tempo real via WebSocket.
+- **SQLite**: Banco de dados relacional para persistência no backend.
+- **Daphne**: Servidor ASGI para suporte a WebSocket e requisições assíncronas.
+
+### 🔹 Infraestrutura
+- **Docker**: Containerização para garantir consistência no ambiente de desenvolvimento e produção.
+- **Makefile**: Automação de comandos no backend.
 
 ---
 
-## 🚀 Como Executar o Projeto
+## ✨ Funcionalidades
 
-### Pré-requisitos
-- Node.js (v16 ou superior)
-- NPM ou Yarn
-- Backend configurado com suporte a API REST e WebSocket
+1. **Gerenciamento de Filmes (CRUD)**:
+   - Adicionar, editar, excluir e visualizar filmes.
+   - Avaliação de filmes com sistema de estrelas (1 a 5).
 
-### Instalação
-1. Clone o repositório:
+2. **Sincronização em Tempo Real**:
+   - Alterações no backend são refletidas no frontend via WebSocket.
+
+3. **Persistência Local com RxDB**:
+   - Suporte offline-first para o frontend.
+
+4. **Integração Backend-Frontend**:
+   - API RESTful no backend para comunicação com o frontend.
+   - Suporte a eventos em tempo real.
+
+---
+
+## 🚀 Pré-requisitos
+
+- **Docker** instalado na máquina.
+- **Node.js** e **npm** instalados para executar o frontend.
+
+---
+
+## 🖥 Configuração e Execução
+
+### ⚙️ Backend
+
+1. **Clonar o repositório**:
    ```bash
-   git clone https://github.com/seu-usuario/movieDB.git
+   git clone <url-do-repo>
+   cd <pasta-do-projeto>/backend
    ```
-2. Instale as dependências:
+
+2. **Iniciar o backend com Docker**:
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Aplicar as migrações do banco de dados**:
+   ```bash
+   docker exec -it backend python manage.py makemigrations
+   docker exec -it backend python manage.py migrate
+   ```
+
+4. **Iniciar o servidor com Daphne**:
+   ```bash
+   docker exec -it backend daphne -b 0.0.0.0 -p 8000 backend.asgi:application
+   ```
+
+---
+
+### 🖥 Frontend
+
+1. **Navegar até a pasta do frontend**:
+   ```bash
+   cd frontend
+   ```
+
+2. **Instalar as dependências**:
    ```bash
    npm install
    ```
-3. Inicie o projeto:
+
+3. **Executar a aplicação**:
    ```bash
    npm start
    ```
 
 ---
 
+## 📋 Observações
+
+- Certifique-se de que o backend está rodando antes de iniciar o frontend.
+- Caso necessário, configure variáveis de ambiente para apontar o frontend para a API backend (localhost ou IP do container Docker).
+- SQLite é utilizado como banco de dados padrão no backend para simplificar o setup inicial.
+
+---
